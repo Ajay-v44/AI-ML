@@ -1,0 +1,4 @@
+models:
+  - type: main
+    engine: ollama
+    model: llama3.2:latest

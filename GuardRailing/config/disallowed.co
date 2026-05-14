@@ -1,0 +1,13 @@
+# Define what an off-topic/math question looks like
+define user ask math
+  "what is 2*2"
+  "calculate the sum of 5 and 10"
+  "do some math for me"
+
+# Define what the bot should do
+define flow math query
+  user ask math
+  bot refuse to answer math
+
+define bot refuse to answer math
+  "I am an E-commerce assistant and cannot perform calculations or answer general questions."
