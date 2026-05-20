@@ -3,10 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, accuracy_score
-from matplotlib.colors import ListedColormap
 from matplotlib.colors import ListedColormap
 
 
@@ -20,9 +19,12 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-pca = PCA(n_components = 2)
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
+
+
+lda = LDA(n_components = 2)
+X_train = lda.fit_transform(X_train, y_train)
+X_test = lda.transform(X_test)
+
 
 classifier = LogisticRegression(random_state = 0)
 classifier.fit(X_train, y_train)
@@ -51,6 +53,7 @@ plt.title('Logistic Regression (Training set)')
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
+plt.savefig('training_set.png')
 plt.show()
 
 
@@ -68,4 +71,5 @@ plt.title('Logistic Regression (Test set)')
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend()
+plt.savefig('test_set.png')
 plt.show()
