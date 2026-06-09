@@ -4,3 +4,6 @@ venv/
 *__pycache__
 test_set
 training_set
+*.tsv
+*.dat
+*.pkl
