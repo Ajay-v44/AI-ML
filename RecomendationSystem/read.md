@@ -1,21 +1,22 @@
-Content-Based Recommender
-Collaborative Filtering
-Hybrid Recommender
-Transformer Embeddings
-Production-grade Recommendation API
-Transformer-Based Semantic Search
-
-
+DONE
+====
 ✅ Popularity Recommender
+
+✅ Item-Based Collaborative Filtering
 
 ✅ Content-Based Recommender
 
 ✅ User-Based Collaborative Filtering
 
-✅ Item-Based Collaborative Filtering
+NEXT
+====
 
 ✅ Matrix Factorization (SVD)
 
 ✅ Neural Collaborative Filtering
 
 ✅ Hybrid Recommender
+
+✅ Fine Tuning / Retraining Pipeline
+
+✅ Production Deployment
