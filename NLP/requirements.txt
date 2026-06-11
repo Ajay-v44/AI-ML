@@ -1,0 +1,11 @@
+nltk
+pandas
+matplotlib
+spacy 
+textblob 
+vaderSentiment 
+transformers 
+scikit-learn 
+# gensim 
+seaborn 
+torch 
