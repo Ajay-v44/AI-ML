@@ -15,9 +15,31 @@ tokenizer=AutoTokenizer.from_pretrained(model)
 
 sentence="I'm so excited to be learning about large langugae models"
 
-input_ids=tokenizer(sentence)
+input_ids=tokenizer(sentence, return_tensors="pt")
 print(input_ids)
 
 
+from transformers import AutoTokenizer,AutoModelForSequenceClassification
+import torch
+
+print(sentence)
+print(input_ids)
+
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased-finetuned-sst-2-english")
+
+with torch.no_grad():
+    logits = model(**input_ids).logits
+
+predicted_class_id = logits.argmax().item()
+model.config.id2label[predicted_class_id]
+
+model_directory = "./"
+
+tokenizer.save_pretrained(model_directory)
+
+model.save_pretrained(model_directory)
 
 
+my_tokenizer = AutoTokenizer.from_pretrained(model_directory)
+
+my_model = AutoModelForSequenceClassification.from_pretrained(model_directory)
