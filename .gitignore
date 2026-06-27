@@ -9,3 +9,4 @@ training_set
 *.pkl
 *.json
 model.safetensors
+index
