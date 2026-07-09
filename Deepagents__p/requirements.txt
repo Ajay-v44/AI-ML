@@ -1,0 +1,7 @@
+deepagents
+langchain
+ipykernel
+langgraph
+langchain_ollama
+tavily-python
+langchain-deepseek
