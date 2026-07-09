@@ -1,0 +1,14 @@
+[project]
+name = "mcp-demo"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain>=0.2.30",
+    "langgraph>=0.1.27",
+    "langchain-groq>=0.0.14",
+    "langchain-mcp-adapters>=0.3.0",
+    "langchain-ollama>=1.1.0",
+    "fastmcp>=3.4.3",
+]

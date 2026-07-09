@@ -10,3 +10,4 @@ training_set
 *.json
 model.safetensors
 index
+*.lock

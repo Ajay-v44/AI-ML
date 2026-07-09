@@ -1,3 +1,5 @@
+from langchain_core.runnables import config
+from langgraph.checkpoint.memory import InMemorySaver
 from typing import Annotated
 
 from typing_extensions import TypedDict
@@ -15,7 +17,7 @@ from langgraph.prebuilt import create_react_agent
 
 from langchain.tools import tool
 
-
+memory=InMemorySaver()
 class State(TypedDict):
     messages: Annotated[list,add_messages]
 
@@ -30,15 +32,25 @@ def chatbot(state:State)->State:
 graph_builder.add_node("chatbot",chatbot)
 graph_builder.add_edge(START,"chatbot")
 graph_builder.add_edge("chatbot",END)
-
-workflow = graph_builder.compile()
+config={"configurable":{"thread_id":"1"}}
+workflow = graph_builder.compile(checkpointer=memory)
 
 # graph_builder.print_ascii()
 
-response=workflow.invoke({"messages": [("user", "Hi, how are you?")]})
+response=workflow.invoke({"messages": [("user", "Hi, how are you?")]}, config)
 
 print(response['messages'][-1].content)
 
-for chunk in workflow.stream({"messages": [("user", "Hi, how are you?")]}):
+for chunk in workflow.stream({"messages": [("user", "Hi, how are you?")]}, config):
     for val in chunk.values():
         print(val['messages'][-1].content, end=" ")
+
+
+response=workflow.invoke({"messages": [("user", "Hi, how are you ?,i AM ajay.")]},config)
+print('\n\n\n\n\n')
+print(response['messages'][-1].content)
+
+
+response=workflow.invoke({"messages": [("user", "What is my name ?")]},config)
+print('\n\n\n\n\n')
+print(response['messages'][-1].content)
